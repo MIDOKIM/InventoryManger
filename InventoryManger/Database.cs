@@ -51,7 +51,6 @@ namespace InventoryManger
                 MessageBox.Show(ex.Message);
                 return false;
             }
-            return true;
         }
         public static bool INSERT(string query)
         {

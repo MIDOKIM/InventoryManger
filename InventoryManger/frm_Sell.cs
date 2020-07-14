@@ -11,9 +11,11 @@ namespace InventoryManger
 {
     public partial class frm_Sell : Form
     {
+        DataTable CurrentBill;
         public frm_Sell()
         {
             InitializeComponent();
+            CurrentBill = new DataTable();
         }
 
         private void Form1_Load(object sender, EventArgs e)
@@ -24,6 +26,11 @@ namespace InventoryManger
         private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
 
+        }
+
+        private void btn_Add_Click(object sender, EventArgs e)
+        {
+            CurrentBill.Rows.Add();
         }
     }
 }
