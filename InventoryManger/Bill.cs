@@ -8,6 +8,28 @@ namespace InventoryManger
     public class Bill
     {
         public int ID;
-        public List<Product> Products;
+        public Dictionary<int,Product> Products = new Dictionary<int, Product>();
+        public void AddProduct(Product p)
+        {
+            if (Products.ContainsKey(p.ID))
+            {
+                Products[p.ID].Quantity += p.Quantity;
+                return;
+            }
+            Products.Add(p.ID, p);
+        }
+        public void Finish()
+        {
+            if (!Products.Any())
+                return;
+            Database.INSERT($"INSERT INTO Bill(Date) VALUES('{DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss")}')");
+            var ID = Convert.ToInt32(Database.SELECT("SELECT SCOPE_IDENTITY();").Rows[0][0]);
+            foreach (var item in Products)
+            {
+                Database.UPDATE($"UPDATE Product SET Quantity=Quantity-{item.Value.Quantity} WHERE ID={item.Key}");
+                Database.INSERT($"INSERT INTO Bill_Products(BillID,ProdID,Quantity) VALUES({ID},{item.Value.ID},{item.Value.Quantity})");
+            }
+
+        }
     }
 }

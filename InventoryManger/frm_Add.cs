@@ -14,13 +14,11 @@ namespace InventoryManger
         public frm_Add()
         {
             InitializeComponent();
-            Database.Load();
         }
 
         private void frm_Add_Load(object sender, EventArgs e)
         {
             RefreshTable();
-
         }
 
         private void btn_Add_Click(object sender, EventArgs e)
@@ -48,12 +46,6 @@ namespace InventoryManger
             var dt = (DataTable)dataGridView1.DataSource;
             Database.
                 UPDATE($"UPDATE Product SET {dt.Columns[e.ColumnIndex]}='{dt.Rows[e.RowIndex][e.ColumnIndex]}' WHERE ID={dt.Rows[e.RowIndex][0]}");
-        }
-
-        private void button1_Click(object sender, EventArgs e)
-        {
-            frm_Sell ss = new frm_Sell();
-            ss.Show();
         }
     }
 }
