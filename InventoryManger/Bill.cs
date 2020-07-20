@@ -27,9 +27,12 @@ namespace InventoryManger
             foreach (var item in Products)
             {
                 Database.UPDATE($"UPDATE Product SET Quantity=Quantity-{item.Value.Quantity} WHERE ID={item.Key}");
-                Database.INSERT($"INSERT INTO Bill_Products(BillID,ProdID,Quantity) VALUES({ID},{item.Value.ID},{item.Value.Quantity})");
+                Database.INSERT($"INSERT INTO Bill_Products(BillID,ProdID,ProdPrice,Quantity) VALUES({ID},{item.Value.ID},{item.Value.Price},{item.Value.Quantity})");
             }
-
+        }
+        public void UpdatePrice(int ID,double Price)
+        {
+            Products[ID].Price = Price;
         }
     }
 }

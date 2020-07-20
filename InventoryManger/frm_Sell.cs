@@ -28,9 +28,13 @@ namespace InventoryManger
         private void RefreshDataGrid()
         {
             dataGridView1.Rows.Clear();
-            foreach (var p in Bill.Products.Values)          
-                dataGridView1.Rows.Add(p.Name, p.Price, p.Quantity, p.Price * p.Quantity);
-            
+            double total = 0;
+            foreach (var p in Bill.Products.Values)
+            {
+                dataGridView1.Rows.Add(p.ID,p.Name, p.Price, p.Quantity, p.Price * p.Quantity);
+                total += p.Price * p.Quantity;            
+            }
+            lbl_Total.Text = total.ToString();
         }
         private void Form1_Load(object sender, EventArgs e)
         {
@@ -68,6 +72,15 @@ namespace InventoryManger
             
             Bill.Finish();
             this.Close();
+        }
+
+        private void dataGridView1_CellValueChanged(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.RowIndex == -1 || e.ColumnIndex == -1)
+                return;
+            Bill.UpdatePrice(Convert.ToInt32(dataGridView1.Rows[e.RowIndex].Cells[0].Value),
+                Convert.ToDouble(dataGridView1.Rows[e.RowIndex].Cells[e.ColumnIndex].Value));
+            RefreshDataGrid();
         }
     }
 }

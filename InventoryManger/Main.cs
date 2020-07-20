@@ -33,5 +33,11 @@ namespace InventoryManger
             Database.Load();
 
         }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            using (var ss = new frm_ViewSales())
+                ss.ShowDialog();
+        }
     }
 }

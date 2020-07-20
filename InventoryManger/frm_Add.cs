@@ -44,6 +44,8 @@ namespace InventoryManger
         private void dataGridView1_CellValueChanged(object sender, DataGridViewCellEventArgs e)
         {
             var dt = (DataTable)dataGridView1.DataSource;
+            if (e.ColumnIndex == 0)
+                return;
             Database.
                 UPDATE($"UPDATE Product SET {dt.Columns[e.ColumnIndex]}='{dt.Rows[e.RowIndex][e.ColumnIndex]}' WHERE ID={dt.Rows[e.RowIndex][0]}");
         }

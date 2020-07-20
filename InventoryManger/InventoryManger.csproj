@@ -59,6 +59,18 @@
     <Compile Include="frm_Add.Designer.cs">
       <DependentUpon>frm_Add.cs</DependentUpon>
     </Compile>
+    <Compile Include="frm_ViewBill.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frm_ViewBill.Designer.cs">
+      <DependentUpon>frm_ViewBill.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frm_ViewSales.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frm_ViewSales.Designer.cs">
+      <DependentUpon>frm_ViewSales.cs</DependentUpon>
+    </Compile>
     <Compile Include="Main.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -73,6 +85,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="frm_Add.resx">
       <DependentUpon>frm_Add.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frm_ViewBill.resx">
+      <DependentUpon>frm_ViewBill.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frm_ViewSales.resx">
+      <DependentUpon>frm_ViewSales.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Main.resx">
       <DependentUpon>Main.cs</DependentUpon>
